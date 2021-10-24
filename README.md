@@ -1,2 +1,3 @@
 # iris-admin-example
-example for iris-admin
+
+This project is a example for [iris-admin](https://github.com/snowlyg/iris-admin)

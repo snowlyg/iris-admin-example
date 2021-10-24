@@ -24,18 +24,18 @@ func main() {
 	var cmdInit = &cobra.Command{
 		Use:   "init",
 		Short: "initialize program and set config",
-		Long:  `initialize this program by set his config param before migrate migration and seed data`,
+		Long:  `initialize this program by set it's config param before migrate migration and seed data`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return web_iris.InitConfig()
 		},
 	}
 
 	var cmdRun = &cobra.Command{
-		Use:   "run",
+		Use:   "migrate",
 		Short: "exec run migration",
 		Long:  `exec run  migrations which are you writed in  migrate.go file`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return migration.Gormigrate().Migrate()
+			return baseMigration().Migrate()
 		},
 	}
 
@@ -44,11 +44,7 @@ func main() {
 		Short: "exec refresh migration",
 		Long:  `exec refresh  migrations which are you writed in  migrate.go file`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			err := migration.Gormigrate().RollbackTo(migration.GetFirstMigrateion().ID)
-			if err != nil {
-				return err
-			}
-			return migration.Gormigrate().Migrate()
+			return baseMigration().Refresh()
 		},
 	}
 
@@ -57,15 +53,28 @@ func main() {
 		Short: "exec rollback",
 		Long:  `exec rollback migrate command which are you execed`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if MigrationId == "" {
-				return migration.Gormigrate().RollbackLast()
-			}
-			return migration.Gormigrate().RollbackTo(MigrationId)
+			return baseMigration().Rollback(MigrationId)
+		},
+	}
+	cmdRollback.PersistentFlags().StringVarP(&MigrationId, "to", "t", "", "Rollback to migration id")
+
+	var cmdSeed = &cobra.Command{
+		Use:   "seed",
+		Short: "exec seed",
+		Long:  `exec seed  command which are you execed`,
+		RunE: func(cmd *cobra.Command, args []string) error {
+			return baseMigration().Seed()
 		},
 	}
 	cmdRollback.PersistentFlags().StringVarP(&MigrationId, "to", "t", "", "Rollback to migration id")
 
 	var rootCmd = &cobra.Command{Use: "iris-admin"}
-	rootCmd.AddCommand(cmdInit, cmdRun, cmdRollback, cmdRefresh)
+	rootCmd.AddCommand(cmdInit, cmdRun, cmdRollback, cmdRefresh, cmdSeed)
 	rootCmd.Execute()
+}
+
+// baseMigration 实现自己的迁移逻辑
+func baseMigration() *migration.MigrationCmd {
+	mc := migration.New(true)
+	return mc
 }
