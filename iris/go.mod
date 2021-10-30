@@ -3,7 +3,7 @@ module github.com/snowlyg/iris-admin-example/iris
 go 1.17
 
 require (
-	github.com/snowlyg/iris-admin v0.0.0-20211024094627-a1d58bb463f9
+	github.com/snowlyg/iris-admin v0.0.0-20211030155606-4fbf7b33aa4f
 	github.com/spf13/cobra v1.2.1
 )
 
