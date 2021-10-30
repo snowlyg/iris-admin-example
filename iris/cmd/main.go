@@ -13,6 +13,11 @@ package main
 
 import (
 	"github.com/snowlyg/iris-admin/modules/migration"
+	v1 "github.com/snowlyg/iris-admin/modules/v1"
+	"github.com/snowlyg/iris-admin/modules/v1/perm"
+	"github.com/snowlyg/iris-admin/modules/v1/role"
+	"github.com/snowlyg/iris-admin/modules/v1/user"
+	"github.com/snowlyg/iris-admin/server/operation"
 	"github.com/snowlyg/iris-admin/server/web/web_iris"
 	"github.com/spf13/cobra"
 )
@@ -66,7 +71,6 @@ func main() {
 			return baseMigration().Seed()
 		},
 	}
-	cmdRollback.PersistentFlags().StringVarP(&MigrationId, "to", "t", "", "Rollback to migration id")
 
 	var rootCmd = &cobra.Command{Use: "iris-admin"}
 	rootCmd.AddCommand(cmdInit, cmdRun, cmdRollback, cmdRefresh, cmdSeed)
@@ -75,6 +79,18 @@ func main() {
 
 // baseMigration 实现自己的迁移逻辑
 func baseMigration() *migration.MigrationCmd {
-	mc := migration.New(true)
+	mc := migration.New()
+	wi := web_iris.Init()
+	v1Party := web_iris.Party{
+		Perfix:    "/api/v1",
+		PartyFunc: v1.Party(),
+	}
+	wi.AddModule(v1Party)
+	wi.InitRouter()
+	routes, _ := wi.GetSources()
+	// 添加 v1 内置模块数据表和数据
+	mc.AddModel(&perm.Permission{}, &user.User{}, &role.Role{}, &operation.Oplog{})
+	mc.AddSeed(perm.New(routes), user.Source, role.Source)
+
 	return mc
 }
