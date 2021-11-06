@@ -4,9 +4,15 @@
  It has some helpful commands for build your program. Example  init , migrate , rollback and so on.
 
  COMMAND
- Init is a command for initialize your program.
- Migrate is a command for migrate your database.
- Rollback is a command for rollback your migrations which you executed .
+ - init is a command for initialize your program.
+ - migrate is a command for migrate your database.
+ - rollback is a command for rollback your migrations which you executed .
+ - refresh is a command for rollback before migrate.
+ - seed is a command for seed project data into database.
+
+ Flags
+- `--seed` or `-s` is a global flag to seed datas into database, default is `true`.
+- `--to ""` or `-t ""` is a flag for rollback command , this flag is required.
 */
 
 package main
@@ -76,7 +82,7 @@ func main() {
 			return baseMigration().Rollback(MigrationId)
 		},
 	}
-	cmdRollback.PersistentFlags().StringVarP(&MigrationId, "to", "t", "", "Rollback to migration id")
+	cmdRollback.Flags().StringVarP(&MigrationId, "to", "t", "", "Rollback to migration id")
 
 	var cmdSeed = &cobra.Command{
 		Use:   "seed",

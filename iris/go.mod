@@ -7,6 +7,8 @@ require (
 	github.com/spf13/cobra v1.2.1
 )
 
+replace github.com/snowlyg/iris-admin v0.0.0-20211030155606-4fbf7b33aa4f => /Users/snowlyg/go/src/github.com/snowlyg/iris-admin
+
 require (
 	github.com/BurntSushi/toml v0.4.1 // indirect
 	github.com/CloudyKit/fastprinter v0.0.0-20200109182630-33d98a066a53 // indirect
