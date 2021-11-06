@@ -23,6 +23,7 @@ import (
 )
 
 var MigrationId string
+var Seed bool
 
 func main() {
 	// cmdInit 初始化项目
@@ -38,18 +39,32 @@ func main() {
 	var cmdRun = &cobra.Command{
 		Use:   "migrate",
 		Short: "exec run migration",
-		Long:  `exec run  migrations which are you writed in  migrate.go file`,
+		Long:  `exec run  migrations which are you writed in migrate.go file`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return baseMigration().Migrate()
+			err := baseMigration().Migrate()
+			if err != nil {
+				return err
+			}
+			if Seed {
+				return baseMigration().Seed()
+			}
+			return nil
 		},
 	}
 
 	var cmdRefresh = &cobra.Command{
 		Use:   "refresh",
 		Short: "exec refresh migration",
-		Long:  `exec refresh  migrations which are you writed in  migrate.go file`,
+		Long:  `exec refresh  migrations which are you writed in migrate.go file`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return baseMigration().Refresh()
+			err := baseMigration().Refresh()
+			if err != nil {
+				return err
+			}
+			if Seed {
+				return baseMigration().Seed()
+			}
+			return nil
 		},
 	}
 
@@ -74,6 +89,7 @@ func main() {
 
 	var rootCmd = &cobra.Command{Use: "iris-admin"}
 	rootCmd.AddCommand(cmdInit, cmdRun, cmdRollback, cmdRefresh, cmdSeed)
+	rootCmd.PersistentFlags().BoolVarP(&Seed, "seed", "s", true, "Seed data to database")
 	rootCmd.Execute()
 }
 

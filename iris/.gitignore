@@ -6,6 +6,7 @@
 *.dylib
 *.yaml
 *.conf
+*.log
 
 # Test binary, built with `go test -c`
 *.test
@@ -16,5 +17,7 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 www/
+tmp/
 iris/iris-admin
 .DS_Store
+latest_log
