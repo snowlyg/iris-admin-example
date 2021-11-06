@@ -615,6 +615,8 @@ github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d/go.mod h1
 github.com/smartystreets/goconvey v1.6.4/go.mod h1:syvi0/a8iFYH4r/RixwvyeAJjdLS9QV7WQ/tjFTllLA=
 github.com/snowlyg/helper v0.0.0-20211010091912-06421609d44a h1:nxPRkyy2QghTXdey1Fok2rZ6X2lWvEv/jAllRopkdAU=
 github.com/snowlyg/helper v0.0.0-20211010091912-06421609d44a/go.mod h1:ApfY5rylaRJgf43tSNXD4lpXJcGrrFYtEEzPk2ZCcxE=
+github.com/snowlyg/iris-admin v0.0.0-20211030155606-4fbf7b33aa4f h1:0FaIoo2zTTiBNBJRCYk/347dvGVNGcZ4vb6DHFJcfsU=
+github.com/snowlyg/iris-admin v0.0.0-20211030155606-4fbf7b33aa4f/go.mod h1:RhyaLCympbD8XnO8F+iF6C+ylGJ83f0MMX8XbVplYxE=
 github.com/snowlyg/multi v0.0.0-20210828154328-14d6bfb7d0a6/go.mod h1:MvzdA9rly5jFfIDcL8kmivnD/fwg8020gKV5+L+780s=
 github.com/snowlyg/multi v0.0.1 h1:2xJwL6xzu4c+2FiuXlXSOAoysswI02dpzOEB4XPIJ3E=
 github.com/snowlyg/multi v0.0.1/go.mod h1:MvzdA9rly5jFfIDcL8kmivnD/fwg8020gKV5+L+780s=
