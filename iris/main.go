@@ -1,9 +1,9 @@
 package main
 
 import (
-	v1 "github.com/snowlyg/iris-admin/modules/v1"
 	"github.com/snowlyg/iris-admin/server/web"
 	"github.com/snowlyg/iris-admin/server/web/web_iris"
+	v1 "github.com/snowlyg/iris-admin/server/web/web_iris/modules/v1"
 )
 
 func main() {

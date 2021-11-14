@@ -18,13 +18,13 @@
 package main
 
 import (
-	"github.com/snowlyg/iris-admin/modules/migration"
-	v1 "github.com/snowlyg/iris-admin/modules/v1"
-	"github.com/snowlyg/iris-admin/modules/v1/perm"
-	"github.com/snowlyg/iris-admin/modules/v1/role"
-	"github.com/snowlyg/iris-admin/modules/v1/user"
+	"github.com/snowlyg/iris-admin/migration"
 	"github.com/snowlyg/iris-admin/server/operation"
 	"github.com/snowlyg/iris-admin/server/web/web_iris"
+	v1 "github.com/snowlyg/iris-admin/server/web/web_iris/modules/v1"
+	"github.com/snowlyg/iris-admin/server/web/web_iris/modules/v1/perm"
+	"github.com/snowlyg/iris-admin/server/web/web_iris/modules/v1/role"
+	"github.com/snowlyg/iris-admin/server/web/web_iris/modules/v1/user"
 	"github.com/spf13/cobra"
 )
 
@@ -111,8 +111,9 @@ func baseMigration() *migration.MigrationCmd {
 	wi.InitRouter()
 	routes, _ := wi.GetSources()
 	// 添加 v1 内置模块数据表和数据
-	mc.AddModel(&perm.Permission{}, &user.User{}, &role.Role{}, &operation.Oplog{})
-	mc.AddSeed(perm.New(routes), user.Source, role.Source)
+	mc.AddModel(&perm.Permission{}, &role.Role{}, &user.User{}, &operation.Oplog{})
+	// notice : 注意模块顺序
+	mc.AddSeed(perm.New(routes), role.Source, user.Source)
 
 	return mc
 }
