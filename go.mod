@@ -4,8 +4,8 @@ go 1.17
 
 require (
 	github.com/snowlyg/helper v0.0.4
-	github.com/snowlyg/iris-admin v1.1.2-alpha2
-	github.com/snowlyg/iris-admin-rbac v0.0.2
+	github.com/snowlyg/iris-admin v1.1.2-alpha3
+	github.com/snowlyg/iris-admin-rbac v0.0.4-alpha
 	github.com/snowlyg/multi v0.0.2
 	github.com/spf13/cobra v0.0.5
 )
@@ -99,7 +99,7 @@ require (
 	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
-	github.com/snowlyg/httptest v0.0.1 // indirect
+	github.com/snowlyg/httptest v0.0.2-alpha // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
