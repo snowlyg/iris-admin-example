@@ -18,7 +18,8 @@ func main() {
 	// 初始化 gin web 项目
 	wi := web_iris.Init()
 	// 添加静态页面
-	wi.AddWebStatic("/admin", "/static", filepath.Join(g.Root, "dist"))
+	wi.AddWebStatic(filepath.Join(g.Root, "dist/admin"), "/admin", "/admin_static")
+	wi.AddWebStatic(filepath.Join(g.Root, "dist/client"), "/client", "/client_static")
 	// 增加权鉴api
 	wi.AddModule(web_iris.Party{
 		Perfix:    "/api/v1",

@@ -4,8 +4,8 @@ go 1.17
 
 require (
 	github.com/snowlyg/helper v0.0.4
-	github.com/snowlyg/iris-admin v1.1.2
-	github.com/snowlyg/iris-admin-rbac v0.0.3
+	github.com/snowlyg/iris-admin v1.1.2-alpha2
+	github.com/snowlyg/iris-admin-rbac v0.0.2
 	github.com/snowlyg/multi v0.0.2
 	github.com/spf13/cobra v0.0.5
 )
@@ -84,6 +84,7 @@ require (
 	github.com/lestrrat-go/strftime v1.0.5 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.16 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
