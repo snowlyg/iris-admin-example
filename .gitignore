@@ -22,3 +22,5 @@ www/
 tmp/
 
 main
+
+.DS_Store

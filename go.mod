@@ -4,8 +4,8 @@ go 1.18
 
 require (
 	github.com/snowlyg/helper v0.0.7
-	github.com/snowlyg/iris-admin v1.1.8
-	github.com/snowlyg/iris-admin-rbac v0.1.0
+	github.com/snowlyg/iris-admin v1.2.0
+	github.com/snowlyg/iris-admin-rbac v0.1.1-0.20221002145036-86b244f067d4
 	github.com/snowlyg/multi v0.0.4
 	github.com/spf13/cobra v0.0.5
 )
@@ -101,7 +101,7 @@ require (
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
-	github.com/snowlyg/httptest v0.0.8 // indirect
+	github.com/snowlyg/httptest v0.0.91 // indirect
 	github.com/spf13/afero v1.8.2 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
@@ -128,7 +128,7 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.19.1 // indirect
-	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e // indirect
+	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d // indirect
 	golang.org/x/image v0.0.0-20190802002840-cff245a6509b // indirect
 	golang.org/x/net v0.0.0-20220607020251-c690dde0001d // indirect
 	golang.org/x/sys v0.0.0-20220608164250-635b8c9b7f68 // indirect
